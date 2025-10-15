@@ -1,0 +1,376 @@
+* {
+    margin: 0;
+    font-family: Onest;
+    box-sizing: border-box;
+
+    --background-color: hsl(0, 87%, 64%);
+    --text-color: hsl(0, 0%, 0%);
+    --secondary-text-color: hsl(from var(--text-color) h s calc(l + 15));
+}
+body {
+    background-color: var(--background-color);
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "image text";
+    padding: 20px 0px;
+    align-items: center;
+    background-color: hsl(from var(--background-color) h s calc(l + 6));
+}
+.image-container {
+    grid-area: image;
+    display: flex;
+    justify-content: end;
+    padding: 0px 60px;
+}
+header img {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid black;
+}
+header div {
+    grid-area: text;
+
+    span {
+        font-size: 0.7em;
+    }
+    h1 {
+        font-size: 4em;
+    }
+
+    p {
+        font-size: large;
+        color: var(--secondary-text-color);
+    }
+}
+
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0px;
+    row-gap: 30px;
+}
+
+article {
+    width: 80%;
+    height: auto;
+    padding: 20px 30px;
+    border-radius: 8px;
+    background-color: hsl(from var(--background-color) h s calc(l + 10));
+}
+
+.about {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "base-info learning-items-container"
+    "hobbies hobbies";
+}
+
+.base-info {
+    grid-area: base-info;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    padding: 20px;
+    row-gap: 20px;
+}
+.base-info {
+    h2 {
+        font-size: 2.5em;
+        width: 100%;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+}
+
+
+.learning-items-container {
+    grid-area: learning-items-container;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto min-content auto;
+    grid-template-areas: 
+    "top-left top top-right"
+    "mid-left mid mid-right"
+    "bot-left bot bot-right";
+    background-color: hsl(from var(--background-color) h s calc(l + 20));
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 480px;
+    height: 400px;
+}
+.learning-items-container div {
+    display: flex;
+}
+.learning-items-container div:last-of-type {
+    grid-area: mid;
+    width: 180px;
+    height: 180px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: hsl(from var(--background-color) h s calc(l + 30));
+
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 20px;
+    text-align: center;
+
+    span {
+        font-size: 2em;
+        font-weight: 700;
+    }
+}
+.learning-items-container div:nth-child(1) {
+    grid-area: top-left;
+    
+    justify-content: end;
+    align-items: end;
+}
+.learning-items-container div:nth-child(2) {
+    grid-area: top;
+    
+    justify-content: center;
+    align-items: center;
+}
+.learning-items-container div:nth-child(3) {
+    grid-area: top-right;
+
+    align-items: end;
+}
+.learning-items-container div:nth-child(4) {
+    grid-area: mid-left;
+    
+    justify-content: center;
+    align-items: center;
+}
+.learning-items-container div:nth-child(5) {
+    grid-area: mid-right;
+    
+    align-items: center;
+    justify-content: center;
+}
+.learning-items-container div:nth-child(6) {
+    grid-area: bot-left;
+
+    justify-content: end;
+}
+.learning-items-container div:nth-child(7) {
+    grid-area: bot;
+    
+    justify-content: center;
+    align-items: center;
+}
+.learning-items-container div:nth-child(8) {
+    grid-area: bot-right;
+}
+
+
+.hobbies {
+    grid-area: hobbies;
+    padding-top: 40px;
+}
+.hobbies h3 {
+    text-align: center;
+    font-size: 2.5em;
+}
+.hobbies > div {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-content: space-around;
+}
+.hobby-container {
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "hobby-image-text";
+    align-items: center;
+    justify-items: center;
+}
+.hobby-container img {
+    grid-area: hobby-image-text;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.hobby-container p {
+    grid-area: hobby-image-text;
+    font-size: 2em;
+    background-color: hsl(0, 0%, 0%, 0.6);
+    padding: 5px 10px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+}
+.hobby-container:hover p {
+    opacity: 1;
+}
+
+.projects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.projects h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.project-card-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.project-card {
+    height: fit-content;
+    width: 45%;
+    background-color: hsl(from var(--background-color) h s calc(l + 20));
+    padding: 20px 30px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-areas: 
+    "card-title card-title"
+    "card-info card-links";
+}
+.project-card h3 {
+    grid-area: card-title;
+    font-size: 1.8em;
+    text-align: center;
+}
+.project-card div:first-of-type {
+    grid-area: card-info;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+.project-card div:last-of-type {
+    grid-area: card-links;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+.project-card div:last-of-type a {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px 5px 5px 2px;
+    margin: 3px 0px;
+}
+.project-card div:last-of-type img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+footer {
+    background-color: hsl(from var(--background-color) h calc(s - 35) calc(l - 30));
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 1.1em;
+    row-gap: 10px;
+    column-gap: 15px;
+    padding: 15px;
+}
+footer p, footer h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer p span {
+    font-weight: 500;
+    margin-right: 7px;
+}
+footer p a img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+@media(max-width: 1500px) {
+    .project-card-container {
+        flex-direction: column;
+    }
+    .project-card {
+        width: 80%;
+    }
+}
+@media(max-width: 1200px) {
+    .about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+@media(max-width: 920px) {
+    header {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "image"
+            "text";
+        justify-items: center;
+    }
+    .image-container {
+        justify-content: center;
+    }
+    header div {
+        text-align: center;
+    }
+    .project-card {
+        grid-template-areas: 
+        "card-title"
+        "card-info"
+        "card-links";
+        justify-items: center;
+    }
+    .project-card div:last-of-type {
+        align-items: center;
+    }
+}
+@media(max-width: 700px) {
+    header img {
+        width: 250px;
+        height: 250px;
+    }
+    article {
+        width: 100%;
+        border-radius: 0px;
+    }
+    .learning-items-container {
+        scale: 0.8;
+    }
+}
